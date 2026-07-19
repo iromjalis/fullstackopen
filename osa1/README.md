@@ -1,2 +1,2 @@
-Osan 1 tehtävien 0.4-0.6 koodi tähän hakemistoon
-Code for exercises 0.4–0.6 of Part 1 in this directory
+Osan 1 tehtävien 1.6–1.16 koodi tähän hakemistoon
+Code for exercises 1.6–1.16 of Part 1 in this directory
