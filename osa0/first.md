@@ -1,0 +1,18 @@
+```mermaid
+sequenceDiagram
+    participant user
+    participant browser
+    participant server
+
+    user->>browser: Write note and click save
+    Note right of browser: Browser captures the user input and prepared to send it to the server
+
+    browser->>server: http://studies.cs.helsinki.fi/exampleapp/notes with note data
+
+    activate server
+    Note right of server: Server recieves the note data and saves it
+    server-->browser: HTTP 302 Redirects to /notes
+    deactivate server
+
+
+```
