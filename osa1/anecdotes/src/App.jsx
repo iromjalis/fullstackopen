@@ -11,18 +11,43 @@ const App = () => {
     "Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when dianosing patients.",
     "The only way to go fast, is to go well.",
   ];
-  //generate random numbers to show one anecdote from the list
-  const randomIndex = Math.floor(Math.random() * anecdotes.length);
-  console.log("random idx", randomIndex);
 
   const [selected, setSelected] = useState(0);
-  // console.log("random index: ", randomIndex);
+  const [votes, setVotes] = useState({
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+  });
+
+  //!show anecdotes randomly with no order
+  const handleNextAnecdote = () => {
+    //generate random numbers to show one anecdote from the list
+    const randomIndex = Math.floor(Math.random() * anecdotes.length);
+
+    return setSelected(randomIndex);
+  };
+
+  //!add votes for the shown anecdote and store the votes of each anecdote into an array or object in the component's state
+  const handleVote = () => {
+    const copy = { ...votes };
+    copy[selected] += 1;
+    console.log("copy after vote", copy);
+
+    return setVotes(copy);
+  };
 
   return (
     <div>
       <p>{anecdotes[selected]}</p>
+      <button onClick={handleVote}>vote</button>
       &nbsp;
-      <button onClick={() => setSelected(randomIndex)}>next anecdote</button>
+      <button onClick={handleNextAnecdote}>next anecdote</button>
+      <h4>has {votes[selected]} votes</h4>
     </div>
   );
 };
