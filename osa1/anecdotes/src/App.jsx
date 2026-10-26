@@ -12,24 +12,55 @@ const App = () => {
     "The only way to go fast, is to go well.",
   ];
 
-  const randomIndex = Math.floor(Math.random() * anecdotes.length);
   const [selected, setSelected] = useState(0);
-  // console.log("random index: ", randomIndex);
+  const [votes, setVotes] = useState({
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+  });
 
-  // const votes = { 0: 1, 1: 3, 2: 4, 3: 2 };
+  //!anecdote, which has max of votes
+  const maxVotes = Math.max(...Object.values(votes));
+  //!index of best anecdote
+  const bestIndex = Object.keys(votes).find((key) => votes[key] === maxVotes);
 
-  const copy = anecdotes.map((i) => [i]);
-  console.log(copy);
+  //!show anecdotes randomly with no order
+  const handleNextAnecdote = () => {
+    //generate random numbers to show one anecdote from the list
+    const randomIndex = Math.floor(Math.random() * anecdotes.length);
 
-  // console.log("votes[random] ", votes[randomIndex]);
+    return setSelected(randomIndex);
+  };
+
+  //!add votes for the shown anecdote and store the votes of each anecdote into an array or object in the component's state
+  const handleVote = () => {
+    const copy = { ...votes };
+    copy[selected] += 1;
+    console.log("votes[bestIndex]", votes[bestIndex]);
+
+    return setVotes(copy);
+  };
+
   return (
     <div>
       <p>{anecdotes[selected]}</p>
-      <button onClick={() => console.log("voted for: ", anecdotes[selected])}>
-        VOTE
-      </button>
+      <p>has {votes[selected]} votes</p>
+      <button onClick={handleVote}>vote</button>
       &nbsp;
-      <button onClick={() => setSelected(randomIndex)}>next anecdote</button>
+      <button onClick={handleNextAnecdote}>next anecdote</button>
+      {maxVotes === 0 ? (
+        ""
+      ) : (
+        <>
+          <h1>Anecdotes with most votes</h1>
+          <p>{anecdotes[bestIndex]}</p>
+        </>
+      )}
     </div>
   );
 };
