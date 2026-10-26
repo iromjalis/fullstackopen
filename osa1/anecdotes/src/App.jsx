@@ -24,6 +24,11 @@ const App = () => {
     7: 0,
   });
 
+  //!anecdote, which has max of votes
+  const maxVotes = Math.max(...Object.values(votes));
+  //!index of best anecdote
+  const bestIndex = Object.keys(votes).find((key) => votes[key] === maxVotes);
+
   //!show anecdotes randomly with no order
   const handleNextAnecdote = () => {
     //generate random numbers to show one anecdote from the list
@@ -36,7 +41,7 @@ const App = () => {
   const handleVote = () => {
     const copy = { ...votes };
     copy[selected] += 1;
-    console.log("copy after vote", copy);
+    console.log("votes[bestIndex]", votes[bestIndex]);
 
     return setVotes(copy);
   };
@@ -44,10 +49,18 @@ const App = () => {
   return (
     <div>
       <p>{anecdotes[selected]}</p>
+      <p>has {votes[selected]} votes</p>
       <button onClick={handleVote}>vote</button>
       &nbsp;
       <button onClick={handleNextAnecdote}>next anecdote</button>
-      <h4>has {votes[selected]} votes</h4>
+      {maxVotes === 0 ? (
+        ""
+      ) : (
+        <>
+          <h1>Anecdotes with most votes</h1>
+          <p>{anecdotes[bestIndex]}</p>
+        </>
+      )}
     </div>
   );
 };
