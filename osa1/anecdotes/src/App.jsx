@@ -11,23 +11,16 @@ const App = () => {
     "Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when dianosing patients.",
     "The only way to go fast, is to go well.",
   ];
-
+  //generate random numbers to show one anecdote from the list
   const randomIndex = Math.floor(Math.random() * anecdotes.length);
+  console.log("random idx", randomIndex);
+
   const [selected, setSelected] = useState(0);
   // console.log("random index: ", randomIndex);
 
-  // const votes = { 0: 1, 1: 3, 2: 4, 3: 2 };
-
-  const copy = anecdotes.map((i) => [i]);
-  console.log(copy);
-
-  // console.log("votes[random] ", votes[randomIndex]);
   return (
     <div>
       <p>{anecdotes[selected]}</p>
-      <button onClick={() => console.log("voted for: ", anecdotes[selected])}>
-        VOTE
-      </button>
       &nbsp;
       <button onClick={() => setSelected(randomIndex)}>next anecdote</button>
     </div>
