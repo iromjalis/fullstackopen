@@ -1,7 +1,7 @@
 import Part from "./Part";
 const Content = ({ parts }) => {
-  return parts.map(({ name, exercises }) => (
-    <Part key={name} name={name} exercises={exercises} />
+  return parts.map(({ name, exercises, id }) => (
+    <Part key={id} name={name} exercises={exercises} />
   ));
 };
 
