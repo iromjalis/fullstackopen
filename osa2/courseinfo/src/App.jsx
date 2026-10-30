@@ -19,23 +19,23 @@ const App = () => {
         },
       ],
     },
-    {
-      name: "HHalf Stack application development",
-      parts: [
-        {
-          name: "fFundamentals of React",
-          exercises: 10,
-        },
-        {
-          name: "uUsing props to pass data",
-          exercises: 7,
-        },
-        {
-          name: "sState of a component",
-          exercises: 14,
-        },
-      ],
-    },
+    // {
+    //   name: "HHalf Stack application development",
+    //   parts: [
+    //     {
+    //       name: "fFundamentals of React",
+    //       exercises: 10,
+    //     },
+    //     {
+    //       name: "uUsing props to pass data",
+    //       exercises: 7,
+    //     },
+    //     {
+    //       name: "sState of a component",
+    //       exercises: 14,
+    //     },
+    //   ],
+    // },
   ];
   return (
     <div>
